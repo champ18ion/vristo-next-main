@@ -2,21 +2,30 @@
 
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useEffect, useState } from 'react';
-
 import sortBy from 'lodash/sortBy';
+
+// Define Lead interface
+interface Lead {
+    full_name: string;
+    company_name: string;
+    lead_status: string;
+    email: string;
+    phone_number: string;
+    date_of_birth: string; // ISO string or formatted date
+}
 
 const LeadTable = () => {
     // Retrieve leads from localStorage
-    const getLeadsFromLocalStorage = () => {
+    const getLeadsFromLocalStorage = (): Lead[] => {
         const storedLeads = localStorage.getItem('leads');
         return storedLeads ? JSON.parse(storedLeads) : [];
     };
 
-    const [leads, setLeads] = useState(getLeadsFromLocalStorage());
+    const [leads, setLeads] = useState<Lead[]>(getLeadsFromLocalStorage());
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
-    const [recordsData, setRecordsData] = useState(leads);
+    const [recordsData, setRecordsData] = useState<Lead[]>(leads);
     const [search, setSearch] = useState('');
     const [sortStatus, setSortStatus] = useState<DataTableSortStatus>({
         columnAccessor: 'full_name',
@@ -30,7 +39,7 @@ const LeadTable = () => {
 
     // Handle search functionality
     useEffect(() => {
-        const filteredLeads = leads.filter((item) => {
+        const filteredLeads = leads.filter((item: Lead) => {
             return (
                 item.full_name.toLowerCase().includes(search.toLowerCase()) ||
                 item.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -51,8 +60,8 @@ const LeadTable = () => {
     useEffect(() => {
         const from = (page - 1) * pageSize;
         const to = from + pageSize;
-        setRecordsData((prev) => prev.slice(from, to)); // Paginate the leads based on page and pageSize
-    }, [page, pageSize]);
+        setRecordsData(leads.slice(from, to)); // Paginate the leads based on page and pageSize
+    }, [page, pageSize, leads]);
 
     const formatDate = (date: string) => {
         const dt = new Date(date);
