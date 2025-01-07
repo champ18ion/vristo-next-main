@@ -87,6 +87,7 @@ const LeadForm = ({ existingLead, onClose }: LeadFormProps) => {
       // If adding a new lead
       const newLeads = [...currentLeads, formData];
       saveLeadsToLocalStorage(newLeads);
+      alert('Lead added successfully!');
     }
 
     // Reset form after submission or close modal
