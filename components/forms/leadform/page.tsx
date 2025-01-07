@@ -2,6 +2,27 @@
 
 import { useState, useEffect } from 'react';
 
+interface Lead {
+    id: number;
+    full_name: string;
+    email: string;
+    phone_number: string;
+    lead_status: string;
+    gender?: string;
+    date_of_birth?: string;
+    address?: string;
+    insurance_type?: string;
+    policy_number?: string;
+    coverage_amount?: string;
+    preferred_plan?: string;
+    next_follow_up_date?: string;
+    source?: string;
+    company_name?: string;
+    referrer?: string;
+    notes?: string;
+  }
+  
+
 interface LeadFormProps {
     existingLead?: Lead;
     onClose: () => void;
