@@ -82,7 +82,7 @@ const ComponentsAppsTodoList = () => {
             tag: 'update',
             priority: 'medium',
             assignee: 'John Smith',
-            path: 'profile-1.jpeg',
+            path: ' ',
             status: 'complete',
         },
         {
@@ -96,7 +96,7 @@ const ComponentsAppsTodoList = () => {
             tag: '',
             priority: 'low',
             assignee: 'John Smith',
-            path: 'profile-16.jpeg',
+            path: 'profile-34.jpeg',
             status: '',
         },
         {
@@ -110,7 +110,7 @@ const ComponentsAppsTodoList = () => {
             tag: 'update',
             priority: 'high',
             assignee: 'John Smith',
-            path: 'profile-5.jpeg',
+            path: 'profile-16.jpeg',
             status: 'important',
         },
         {
